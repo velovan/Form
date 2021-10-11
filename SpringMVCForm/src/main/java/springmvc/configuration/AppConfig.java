@@ -22,11 +22,9 @@ import springmvc.converter.RoleToUserProfileConverter;
 @EnableWebMvc
 @ComponentScan(basePackages = "springmvc")
 public class AppConfig extends WebMvcConfigurerAdapter{
-	
-	
+		
 	@Autowired
-	RoleToUserProfileConverter roleToUserProfileConverter;
-	
+	RoleToUserProfileConverter roleToUserProfileConverter;	
  
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
