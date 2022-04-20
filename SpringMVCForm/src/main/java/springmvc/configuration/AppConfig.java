@@ -27,8 +27,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	RoleToUserProfileConverter roleToUserProfileConverter;	
  
 	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-
+	public void configureViewResolvers(ViewResolverRegistry registry){
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
@@ -38,19 +37,19 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	
 	 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
     
     
     @Override
-    public void addFormatters(FormatterRegistry registry) {
+    public void addFormatters(FormatterRegistry registry){
         registry.addConverter(roleToUserProfileConverter);
     }
 	
  
     @Bean
-	public MessageSource messageSource() {
+	public MessageSource messageSource(){
 	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 	    messageSource.setBasename("messages");
 	    return messageSource;
@@ -58,7 +57,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     
   
     @Override
-    public void configurePathMatch(PathMatchConfigurer matcher) {
+    public void configurePathMatch(PathMatchConfigurer matcher){
         matcher.setUseRegisteredSuffixPatternMatch(true);
     }
 }
