@@ -27,7 +27,7 @@ import springmvc.service.UserService;
 @Controller
 @RequestMapping("/")
 @SessionAttributes("roles")
-public class AppController {
+public class AppController{
 
 	@Autowired
 	UserService userService;
@@ -41,7 +41,7 @@ public class AppController {
 
 	 
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-	public String listUsers(ModelMap model) {
+	public String listUsers(ModelMap model){
 
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
@@ -50,7 +50,7 @@ public class AppController {
 
 	 
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.GET)
-	public String newUser(ModelMap model) {
+	public String newUser(ModelMap model){
 		User user = new User();
 		model.addAttribute("user", user);
 		model.addAttribute("edit", false);
@@ -62,7 +62,7 @@ public class AppController {
 	public String saveUser(@Valid User user, BindingResult result,
 			ModelMap model) {
 
-		if (result.hasErrors()) {
+		if (result.hasErrors()){
 			return "registration";
 		}
 
@@ -94,7 +94,7 @@ public class AppController {
 	public String updateUser(@Valid User user, BindingResult result,
 			ModelMap model, @PathVariable String ssoId) {
 
-		if (result.hasErrors()) {
+		if (result.hasErrors()){
 			return "registration";
 		}
 		 
@@ -114,7 +114,7 @@ public class AppController {
 	
  
 	@ModelAttribute("roles")
-	public List<UserProfile> initializeProfiles() {
+	public List<UserProfile> initializeProfiles(){
 		
 	  return userProfileService.findAll();
 	}
