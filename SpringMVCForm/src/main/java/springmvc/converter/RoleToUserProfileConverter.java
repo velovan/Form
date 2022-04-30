@@ -14,7 +14,7 @@ public class RoleToUserProfileConverter implements Converter<Object, UserProfile
 	@Autowired
 	UserProfileService userProfileService;
 
-	public UserProfile convert(Object element) {
+	public UserProfile convert(Object element){
 		Integer id = Integer.parseInt((String)element);
 		UserProfile profile= userProfileService.findById(id);
 		System.out.println("Profile : "+profile);
