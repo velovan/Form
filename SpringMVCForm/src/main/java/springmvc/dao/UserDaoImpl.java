@@ -13,7 +13,7 @@ import springmvc.model.User;
 
 
 @Repository("userDao")
-public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
+public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao{
 
 	public User findById(int id) {
 		User user = getByKey(id);
@@ -23,7 +23,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		return user;
 	}
 
-	public User findBySSO(String sso) {
+	public User findBySSO(String sso){
 		System.out.println("SSO : "+sso);
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("ssoId", sso));
@@ -35,20 +35,18 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<User> findAllUsers() {
+	public List<User> findAllUsers(){
 		Criteria criteria = createEntityCriteria().addOrder(Order.asc("firstName"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		List<User> users = (List<User>) criteria.list();
-		
-		 
+		List<User> users = (List<User>) criteria.list();	 
 		return users;
 	}
 
-	public void save(User user) {
+	public void save(User user){
 		persist(user);
 	}
 
-	public void deleteBySSO(String sso) {
+	public void deleteBySSO(String sso){
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("ssoId", sso));
 		User user = (User)crit.uniqueResult();
