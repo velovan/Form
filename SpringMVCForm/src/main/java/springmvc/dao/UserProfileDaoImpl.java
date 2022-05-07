@@ -9,16 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import springmvc.model.UserProfile;
 
-
-
 @Repository("userProfileDao")
 public class UserProfileDaoImpl extends AbstractDao<Integer, UserProfile>implements UserProfileDao{
 
-	public UserProfile findById(int id) {
+	public UserProfile findById(int id){
 		return getByKey(id);
 	}
 
-	public UserProfile findByType(String type) {
+	public UserProfile findByType(String type){
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("type", type));
 		return (UserProfile) crit.uniqueResult();
