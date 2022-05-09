@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="USER_PROFILE")
-public class UserProfile {
+public class UserProfile{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;	
@@ -17,24 +17,24 @@ public class UserProfile {
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
 	private String type = UserProfileType.USER.getUserProfileType();
 	
-	public Integer getId() {
+	public Integer getId(){
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id){
 		this.id = id;
 	}
 
-	public String getType() {
+	public String getType(){
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(String type){
 		this.type = type;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode(){
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -43,7 +43,7 @@ public class UserProfile {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj){
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -65,7 +65,7 @@ public class UserProfile {
 	}
 
 	@Override
-	public String toString() {
+	public String toString(){
 		return "UserProfile [id=" + id + ", type=" + type + "]";
 	}
 
