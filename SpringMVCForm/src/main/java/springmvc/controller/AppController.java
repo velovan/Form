@@ -65,7 +65,6 @@ public class AppController{
 		if (result.hasErrors()){
 			return "registration";
 		}
-
 		 
 		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
 			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
@@ -74,12 +73,10 @@ public class AppController{
 		}
 		
 		userService.saveUser(user);
-
 		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " registered successfully");
 		//return "success";
 		return "registrationsuccess";
 	}
-
  
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String ssoId, ModelMap model) {
@@ -89,33 +86,27 @@ public class AppController{
 		return "registration";
 	}
 	
-	 
 	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.POST)
 	public String updateUser(@Valid User user, BindingResult result,
 			ModelMap model, @PathVariable String ssoId) {
 
 		if (result.hasErrors()){
 			return "registration";
-		}
-		 
+		}	 
 		userService.updateUser(user);
-
 		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
 		return "registrationsuccess";
 	}
-
 	 
 	@RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String ssoId) {
-		userService.deleteUserBySSO(ssoId);
-		
+		userService.deleteUserBySSO(ssoId);	
 		return "redirect:/list";
 	}
 	
  
 	@ModelAttribute("roles")
 	public List<UserProfile> initializeProfiles(){
-		
 	  return userProfileService.findAll();
 	}
 
