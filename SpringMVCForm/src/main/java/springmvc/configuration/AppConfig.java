@@ -39,15 +39,13 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-    }
-    
+    }    
     
     @Override
     public void addFormatters(FormatterRegistry registry){
         registry.addConverter(roleToUserProfileConverter);
     }
 	
- 
     @Bean
 	public MessageSource messageSource(){
 	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -55,7 +53,6 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	    return messageSource;
 	}
     
-  
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher){
         matcher.setUseRegisteredSuffixPatternMatch(true);
